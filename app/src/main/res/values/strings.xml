@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">secretNote</string>
+    <string name="diaryHint">비밀 다이어리를 입력해보세요.</string>
 </resources>

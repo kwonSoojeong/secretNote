@@ -1,6 +1,7 @@
 package com.crystal.secretnote
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,16 +53,16 @@ class MainActivity : AppCompatActivity() {
 
         openButton.setOnClickListener {
             if (changePasswordMode) {
-                Toast.makeText(this, "비밀번호 변경중입니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "비밀번호 변경중입니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val pwPreference = getSharedPreferences("password", Context.MODE_PRIVATE);
+            val pwPreference = getSharedPreferences("password", Context.MODE_PRIVATE)
             val pwFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
             if (pwPreference.getString("password", "000").equals(pwFromUser)) {
                 //성공
                 //TODO 다이어리 페이지 작성후에 넘겨주어야함
-//                startActivity()
+                startActivity(Intent(this, DiaryActivity::class.java))
             } else {
                 //실패
                 showErrorAlertDialog()
@@ -105,6 +106,5 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("확인", { _, _ -> })
             .create()
             .show()
-
     }
 }
